@@ -150,7 +150,7 @@ All actions are logged to `tool_manager.log` in the working directory with times
 | apt install | Yes | Not supported (prototype) |
 | Python dep check | Yes | Yes |
 
-See `DESIGN.md` for architecture details and future work (choco/brew support, GUI, upgrade checks).
+See [DESIGN.md](DESIGN.md) for architecture details and future work (choco/brew support, GUI, upgrade checks).
 
 ## Demo / Testing Evidence
 
