@@ -1,0 +1,45 @@
+{
+  "tools": [
+    {
+      "name": "ngspice",
+      "description": "SPICE circuit simulator used by eSim for analog simulation",
+      "executable": "ngspice",
+      "apt_package": "ngspice",
+      "version_command": ["ngspice", "--version"],
+      "version_pattern": "(\\d+\\+[\\w.-]+|\\d+\\.\\d+[\\w.-]*)",
+      "expected_version": "36+",
+      "system_dependencies": [
+        "libngspice0",
+        "libngspice0-dev",
+        "build-essential"
+      ],
+      "python_dependencies": []
+    },
+    {
+      "name": "kicad",
+      "description": "Open-source EDA suite for schematic capture and PCB design",
+      "executable": "kicad",
+      "apt_package": "kicad",
+      "version_command": ["kicad-cli", "version"],
+      "version_pattern": "(\\d+\\.\\d+\\.\\d+)",
+      "expected_version": "7.0.0",
+      "system_dependencies": [
+        "build-essential",
+        "python3-pip",
+        "git",
+        "libwxgtk3.2-dev"
+      ],
+      "python_dependencies": []
+    }
+  ],
+  "global_system_dependencies": [
+    "python3-pip",
+    "build-essential",
+    "git"
+  ],
+  "global_python_dependencies": [
+    "numpy",
+    "matplotlib",
+    "scipy"
+  ]
+}
