@@ -151,3 +151,35 @@ All actions are logged to `tool_manager.log` in the working directory with times
 | Python dep check | Yes | Yes |
 
 See `DESIGN.md` for architecture details and future work (choco/brew support, GUI, upgrade checks).
+
+## Demo / Testing Evidence
+
+All testing below was performed on a clean Ubuntu 24.04 VM (VirtualBox), confirming the prototype works end-to-end beyond isolated unit checks.
+
+### 1. Initial Detection — Tools Not Installed
+
+![Initial tool detection](screenshots/01-initial-detection.png)
+*Initial run on a clean Ubuntu system — the tool correctly detects that neither ngspice nor KiCad are installed.*
+
+### 2. Dependency Checker — Before Install
+
+![Dependency checker output](screenshots/02-dependency-check-before.png)
+*Dependency Checker output — clearly separates system-level and Python-level dependencies per tool, flagging what's missing vs present.*
+
+### 3. Tool Installation — Live Install with Confirmation
+
+![Installing ngspice with confirmation prompt](screenshots/03-install-ngspice.png)
+*Tool Installation Management in action — installing ngspice requires explicit user confirmation (y/N) before any sudo command runs. Immediately after, the Detector correctly reports the tool as installed with its live version number (45.2).*
+
+### 4. Dependency Checker — After Install
+
+![Dependency checker output after install](screenshots/04-dependency-check-after.png)
+*Post-install dependency check confirms all of ngspice's system dependencies are now satisfied.*
+
+### 5. Python Dependency Handling (Additional)
+
+![Installing numpy via pip](screenshots/05a-install-numpy.png)
+*Installing a missing Python dependency (numpy) via pip — demonstrating the tool correctly flagged it as missing, and a standard `pip3 install numpy --break-system-packages` resolves it.*
+
+![Dependency checker confirming numpy installed](screenshots/05b-numpy-verified.png)
+*Re-running the checker confirms numpy now shows as importable — the same detect-then-verify pattern used for system-level tools also works for Python packages.*
